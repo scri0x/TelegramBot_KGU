@@ -12,7 +12,7 @@ import sqlite3
 conn = sqlite3.connect('databases/subjects.db')
 cur = conn.cursor()
 
-# Объект бота !
+# Объект бота
 bot_token = getenv("BOT_TOKEN")
 if not bot_token:
     exit("Error: no token provided")
@@ -32,7 +32,7 @@ async def cmd_phys(message: types.Message):
     ]
     keyboard = types.InlineKeyboardMarkup(row_width=1)
     keyboard.add(*buttons)
-    await message.reply("Выбери", reply_markup=keyboard)
+    await message.answer("👇Выберите профильные предметы👇", reply_markup=keyboard)
 
 
 # Math
@@ -45,7 +45,7 @@ async def cmd_math(message: types.Message):
     ]
     keyboard = types.InlineKeyboardMarkup(row_width=1)
     keyboard.add(*buttons)
-    await message.reply("Выбери", reply_markup=keyboard)
+    await message.answer("Выберите профильные предметы", reply_markup=keyboard)
 
 
 # Biology
@@ -57,7 +57,7 @@ async def cmd_bio(message: types.Message):
     ]
     keyboard = types.InlineKeyboardMarkup(row_width=1)
     keyboard.add(*buttons)
-    await message.reply("Выбери", reply_markup=keyboard)
+    await message.answer("Выбери", reply_markup=keyboard)
 
 
 # Chemistry
@@ -69,7 +69,7 @@ async def cmd_chem(message: types.Message):
     ]
     keyboard = types.InlineKeyboardMarkup(row_width=1)
     keyboard.add(*buttons)
-    await message.reply("Выбери", reply_markup=keyboard)
+    await message.answer("Выбери", reply_markup=keyboard)
 
 
 # Geography
@@ -83,7 +83,7 @@ async def cmd_geo(message: types.Message):
     ]
     keyboard = types.InlineKeyboardMarkup(row_width=1)
     keyboard.add(*buttons)
-    await message.reply("Выбери", reply_markup=keyboard)
+    await message.answer("Выбери", reply_markup=keyboard)
 
 
 # History
@@ -97,7 +97,7 @@ async def cmd_history(message: types.Message):
     ]
     keyboard = types.InlineKeyboardMarkup(row_width=1)
     keyboard.add(*buttons)
-    await message.reply("Выбери", reply_markup=keyboard)
+    await message.answer("Выбери", reply_markup=keyboard)
 
 
 # RusLang
@@ -108,7 +108,7 @@ async def cmd_rus_lang(message: types.Message):
     ]
     keyboard = types.InlineKeyboardMarkup(row_width=1)
     keyboard.add(*buttons)
-    await message.reply("Выбери", reply_markup=keyboard)
+    await message.answer("Выбери", reply_markup=keyboard)
 
 
 # KZLang
@@ -119,7 +119,7 @@ async def cmd_kz_lang(message: types.Message):
     ]
     keyboard = types.InlineKeyboardMarkup(row_width=1)
     keyboard.add(*buttons)
-    await message.reply("Выбери", reply_markup=keyboard)
+    await message.answer("Выбери", reply_markup=keyboard)
 
 
 # HSL
@@ -131,7 +131,7 @@ async def cmd_hsl(message: types.Message):
     ]
     keyboard = types.InlineKeyboardMarkup(row_width=1)
     keyboard.add(*buttons)
-    await message.reply("Выбери", reply_markup=keyboard)
+    await message.answer("Выбери", reply_markup=keyboard)
 
 
 # Payment
@@ -148,7 +148,7 @@ async def cmd_menu_items(message: types.Message):
     buttons = ["first", "second", "third", "chetvertyii",
                "pyatyi", "shestoi", "🔄Назад🔄"]
     keyboard.add(*buttons)
-    await message.answer("Зфывфыв", reply_markup=keyboard)
+    await message.answer("⬇👨🏻‍🎓Выберите специальность магистратуры👨🏻‍🎓⬇", reply_markup=keyboard)
 
 
 # Doctoral
@@ -158,7 +158,7 @@ async def cmd_menu_items(message: types.Message):
     buttons = ["first1", "second2", "third3", "chetvertyii4",
                "pyatyi5", "shestoi6", "🔄Назад🔄"]
     keyboard.add(*buttons)
-    await message.answer("ыыыыыы", reply_markup=keyboard)
+    await message.answer("⬇👨‍🔬Выберите специальность докторантуры👨‍🔬⬇", reply_markup=keyboard)
 
 
 # GrantsAndDiscount
@@ -173,7 +173,7 @@ async def cmd_menu_items(message: types.Message):
     ]
     keyboard = types.InlineKeyboardMarkup()
     keyboard.add(*buttons)
-    await message.reply("Выберите скидку", reply_markup=keyboard)
+    await message.answer("Выберите скидку", reply_markup=keyboard)
 
 
 @dp.message_handler(commands="menu")
@@ -183,16 +183,16 @@ async def cmd_menu(message: types.Message):
                "🏢Колледж ЕНТ Специальности🏢", "👨🏻‍🎓Специальности Магистратуры👨🏻‍🎓",
                "👨‍🔬Специальности Докторантуры👨‍🔬"]
     keyboard.add(*buttons)
-    await message.answer("Здравствуйте", reply_markup=keyboard)
+    await message.answer("Здравствуйте, Коркыт Ата бот приветствует вас🙋‍♂️\n⬇Выберите действие⬇", reply_markup=keyboard)
 
 
 @dp.message_handler(Text(contains="предметы", ignore_case=True))
 async def cmd_menu_items(message: types.Message):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2, )
     buttons = ["Биология-География", "География-Всемирная История", "География-Английский",
-               "Всемирная История-Человек.Общество.Право", "Казахский Язык-Казахская Литература", "Математика-Физика",
+               "Всемирная История-Человек.Общество.Право", "Казахский Язык-Казахская Литература", "Физика-Математика",
                "Математика-География", "Русский Язык-Русская Литература", "Химия-Биология",
-               "Химия-Физика", "Английский Язык-Всемирная История", "Творческий экзамен", "🔄Назад🔄"]
+               "Физика-Химия", "Английский Язык-Всемирная История", "Творческий экзамен", "🔄Назад🔄"]
     keyboard.add(*buttons)
     await message.answer("Выберите свои предметы", reply_markup=keyboard)
 
@@ -204,7 +204,7 @@ async def cmd_back(message: types.Message):
                "🏢Колледж ЕНТ Специальности🏢", "👨🏻‍🎓Специальности Магистратуры👨🏻‍🎓",
                "👨‍🔬Специальности Докторантуры👨‍🔬"]
     keyboard.add(*buttons)
-    await message.answer("Здравствуйте", reply_markup=keyboard)
+    await message.answer("Здравствуйте, Коркыт Ата бот приветствует вас🙋‍♂️\n⬇Выберите действие⬇", reply_markup=keyboard)
 
 
 def request(message):
