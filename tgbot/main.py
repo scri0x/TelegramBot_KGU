@@ -12,7 +12,7 @@ import sqlite3
 conn = sqlite3.connect('databases/subjects.db')
 cur = conn.cursor()
 
-# Объект бота
+# Объект бота !
 bot_token = getenv("BOT_TOKEN")
 if not bot_token:
     exit("Error: no token provided")
